@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Forecast</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">House Price Forecast</div>
+        <div class="content">
+            <form action="/predict-price" method="POST">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Bedrooms:</span>
+                        <input type="text" name="bedrooms" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Sqft living:</span>
+                        <input type="text" name="sqft_living" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Floors:</span>
+                        <input type="text" name="floors" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Bathrooms:</span>
+                        <input type="text" name="bathrooms" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Waterfront:</span>
+                        <input type="text" name="waterfront" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Yr built:</span>
+                        <input type="text" name="yr_built" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">View:</span>
+                        <input type="text" name="view" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Condition:</span>
+                        <input type="text" name="condition" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Grade:</span>
+                        <input type="text" name="grade" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Zipcode:</span>
+                        <input type="text" name="zipcode" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Lat:</span>
+                        <input type="text" name="lat" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Long:</span>
+                        <input type="text" name="long" required>
+                    </div>
+                </div>
+
+                <label for="method">Select a prediction method:</label>
+                <select name="method" id="method" required>
+                    <option value="linear_regression">Linear Regression</option>
+                    <option value="lasso_regression">Lasso Regression</option>
+                    <option value="neural_network">Neural Network</option>
+                </select><br><br>
+
+                {% if predicted_price %}
+                <h2>Predicted results: {{ predicted_price }}</h2>
+                {% endif %}
+
+                <div class="button">
+                    <input type="submit" value="Predict">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
